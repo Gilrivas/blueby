@@ -1,8 +1,6 @@
 import * as React from 'react';
 import {StyleSheet, SafeAreaView} from 'react-native';
-import { createStackNavigator } from '@react-navigation/stack';
-import SignUpScreen from './src/screens/signupscreen/SignUpScreen';
-import WelcomeScreen from './src/screens/welcomescreen/WelcomeScreen';
+import Navigator from './src/Navigation';
 /* import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'; *
 
@@ -47,7 +45,7 @@ export default function App() {
   return (
     <SafeAreaView style={styles.root}>
 
-      <WelcomeScreen />
+      <Navigator />
 
     </SafeAreaView>
   );

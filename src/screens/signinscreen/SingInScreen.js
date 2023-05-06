@@ -2,13 +2,12 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import CustomInput from '../../components/CustomInput/CustomInput'
 
-
-const SignUpScreen = () => {
+const SingInScreen = () => {
   return (
     <View>
-      <CustomInput />
+      <Text>SingInScreen</Text>
     </View>
   )
 }
 
-export default SignUpScreen
+export default SingInScreen

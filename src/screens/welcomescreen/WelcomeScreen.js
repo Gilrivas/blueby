@@ -2,15 +2,19 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import { StyleSheet } from 'react-native'
-import { createStackNavigator } from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native'
 
 const WelcomeScreen = () => {
 
+const navigation = useNavigation();
+
 const onSignInPressed = () => {
-    console.warn('Sign in')
+    navigation.navigate('SignIn')
 }
+
 const onSignUpPressed = () => {
-    console.warn('Sign up')
+
+    navigation.navigate('SignUp')
 }
 
   return (
