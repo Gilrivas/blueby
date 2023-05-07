@@ -2,13 +2,17 @@ import { Pressable, Text } from 'react-native'
 import React from 'react'
 import { StyleSheet } from 'react-native'
 
+
 const CustomButton = ({text , onPress}) => {
+
   return (
     <Pressable style={styles.container} onPress={onPress}>
       <Text style={styles.text}>{text}</Text>
     </Pressable>
   )
 }
+
+
 
 const styles = StyleSheet.create({
     container:{
@@ -21,8 +25,8 @@ const styles = StyleSheet.create({
     
     },
     text: {
-        fontWeight: 'bold',
         color: 'black',
+        fontFamily: 'Inter',
        
     },
   });
