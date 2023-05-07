@@ -41,8 +41,12 @@ const onSignUpPressed = () => {
 
 const styles = StyleSheet.create({
     container:{
-      alignItems: 'center',
-      backgroundColor: '#0984E3'
+        width: "100%",
+        height: "100%",
+        backgroundColor: '#0984E3',
+        alignItems: 'center',
+      justifyContent: 'center'
+     
     },
 
     logo:{
