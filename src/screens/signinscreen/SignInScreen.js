@@ -1,17 +1,44 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet} from 'react-native'
 import CustomInput from '../../components/CustomInput/CustomInput'
 import CustomButton from '../../components/CustomButton/CustomButton'
-import CustomCheckbox from '../../components/CustomCheckBox/CustomCheckbox'
+import { useState } from 'react'
 
 const SingInScreen = () => {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = async () => {
+    const data = {
+      email: email,
+      password: password
+    };
+    const response = await fetch('http://192.168.1.34:3000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+    if (response.ok) {
+      console.log('ok');
+    } else {
+      const errorMessage = await response.text();
+      console.error(errorMessage);
+    }
+  };
+
+
   return (
     <View style={styles.container}> 
+    
       <Text style={styles.title}>Tu nous avez manqué et t’es Bleuby’s aussi </Text>
 
-      <CustomInput placeholder='Email' />
-      <CustomInput placeholder='Mot de passe' />
+      <CustomInput placeholder='Email' value={email} setValue={setEmail}/>
 
-      <CustomButton text="SE CONNECTER" />
+      <CustomInput placeholder='Mot de passe' value={password} setValue={setPassword} secureTextEntry={true}/>
+
+      <CustomButton text="SE CONNECTER" onPress={handleSubmit} />
   
       <Text style={styles.text}>N’oubliez pas, que nous sommes là pour toi, pour t’offrir une service de qualité, et que tu sois plus épanoui dans ta vie</Text>
 

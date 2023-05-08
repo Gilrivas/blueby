@@ -1,10 +1,11 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { StyleSheet } from 'react-native'
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import WelcomeScreen from '../screens/welcomescreen/WelcomeScreen';
-import SignUpScreen from '../screens/signupscreen/SignUpScreen';
-import SingInScreen from '../screens/signinscreen/SingInScreen';
+import SignUpScreen from '../screens/SignUpScreen/SignUpScreen';
+import SingInScreen from '../screens/SignInScreen/SignInScreen';
+
 
 const Stack = createStackNavigator();
 
@@ -24,7 +25,7 @@ const Navigator = () => {
 const styles = StyleSheet.create({
   root:{
   
-    backgroundColor: 'black'
+    
   },
 });
 

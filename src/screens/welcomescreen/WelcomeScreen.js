@@ -3,25 +3,34 @@ import React from 'react'
 import CustomButton from '../../components/CustomButton/CustomButton'
 import { StyleSheet } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import { useFonts } from 'expo-font';
 
 const WelcomeScreen = () => {
+  const [loaded] = useFonts({
+    Inter: require('../../../assets/fonts/Inter.ttf'),
+    Inter_Bold: require('../../../assets/fonts/Inter-ExtraBold.ttf'),
+    Inter_Light: require('../../../assets/fonts/Inter-Light.ttf'),
+  });
 
-const navigation = useNavigation();
+  const navigation = useNavigation();
 
-const onSignInPressed = () => {
+  const onSignInPressed = () => {
     navigation.navigate('SignIn')
-}
+  }
 
-const onSignUpPressed = () => {
-
+  const onSignUpPressed = () => {
     navigation.navigate('SignUp')
-}
+  }
+
+  if (!loaded) {
+    return null;
+  }
 
   return (
     <View style={styles.container}>
       <Text style={styles.logo}>Blueby</Text>
 
-      <Text style={styles.text}>Ton app intelligente dédié pour  avoir tout t’es Crushs plus proche de toi </Text>
+      <Text style={styles.text}>Ton app intelligente dédié pour  avoir tout tes Crushs plus proche de toi </Text>
 
       <Text style={styles.text}>Nous avons implémenté la AI pour te montrer les gens qui t’intéressent vraiment et protéger ton intimité.</Text>
 
@@ -45,24 +54,27 @@ const styles = StyleSheet.create({
         height: "100%",
         backgroundColor: '#0984E3',
         alignItems: 'center',
-      justifyContent: 'center'
-     
+      justifyContent: 'center',
     },
 
     logo:{
         color: 'white',
-        marginVertical: 15,
+        marginVertical: 10,
         fontSize: 34,
-        fontWeight: 'bold',
+        
+        fontFamily: 'Inter_Bold',
     },
 
     text:{
+        width: '80%',
         color: 'white',
-        marginVertical: 10,
-        fontSize: 12,
+        marginVertical: 15,
+        fontSize: 14,
+        fontFamily: 'Inter_Light',
+        textAlign: 'center',
         
-    }
-   
+    },
+
   });
 
 export default WelcomeScreen
