@@ -42,34 +42,19 @@ app.post('/SignUp', (req, res) => {
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
   
-    // Buscar el usuario en la base de datos
     const data = await User.findOne({ where: { email, password } });
   
     if (data.id) {
-      // Si el usuario existe, generar un token de autenticación y enviarlo en la respuesta
-     const authToken = generateAuthToken(User);
-  
-      res.redirect('/home');
-  
+      const token = generateAuthToken(data.id);
+      return token
+      
 
     } else {
       res.status(401).send('Invalid username or password');
     }
   });
-  
- /*  function generateAuthToken(user) {
-    // Generar un token de autenticación único para el usuario
-    // Esto podría hacerse utilizando una biblioteca de autenticación como JWT
-    return 'AUTH_TOKEN_HERE';
-  } */
-
-  app.get('/home', authenticateToken, (req, res) => {
-  
-    res.render('home');
-  });
 
   
-
   
   function generateAuthToken(userId) {
     const payload = { userId };
@@ -77,8 +62,8 @@ app.post('/login', async (req, res) => {
     const token = jwt.sign(payload, secret);
     return token
   }
-
-  function authenticateToken(req, res, next) {
+ 
+ /*  function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1];
     if (token == null) return res.sendStatus(401);
@@ -88,7 +73,7 @@ app.post('/login', async (req, res) => {
       req.user = user;
       next();
     });
-  }
+  }  */
  
   
 app.listen(3000, () => console.log('Server running on port 3000'));
@@ -101,3 +86,4 @@ sequelize
   .catch(error => {
     console.error('Unable to connect to the database:', error);
   });
+

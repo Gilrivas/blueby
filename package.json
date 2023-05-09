@@ -31,7 +31,8 @@
     "react-native-screens": "^3.20.0",
     "react-native-web": "~0.18.10",
     "react-navigation": "^4.4.4",
-    "sequelize": "^6.31.1"
+    "sequelize": "^6.31.1",
+    "url": "^0.11.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

@@ -1,14 +1,14 @@
 import * as React from 'react';
-import {StyleSheet, SafeAreaView, StatusBar } from 'react-native';
-import Navigator from './src/Navigation';
+import {StyleSheet, StatusBar } from 'react-native';
+
+import { AuthProvider } from './src/context/AuthContext';
+import AppNav from './src/Navigation/AppNav';
 
 export default function App() {
   return (
-    <SafeAreaView style={styles.root}>
-
-      <Navigator />
-
-    </SafeAreaView>
+    <AuthProvider>
+      <AppNav />
+    </AuthProvider>
   );
 };
 
