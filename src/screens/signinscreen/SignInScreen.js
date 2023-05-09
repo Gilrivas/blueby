@@ -7,6 +7,7 @@ const SingInScreen = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [authToken, setAuthToken] = useState(null);
 
   const handleSubmit = async () => {
     const data = {
@@ -16,12 +17,14 @@ const SingInScreen = () => {
     const response = await fetch('http://192.168.1.34:3000/login', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}`  
       },
       body: JSON.stringify(data)
     });
     if (response.ok) {
-      console.log('ok');
+      const { token } = await response.json(); // asumiendo que el servidor devuelve el token en la respuesta
+      setAuthToken(token);
     } else {
       const errorMessage = await response.text();
       console.error(errorMessage);
