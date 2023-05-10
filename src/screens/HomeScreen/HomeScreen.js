@@ -1,13 +1,16 @@
 import { View, Text, StyleSheet, SafeAreaView, Image } from 'react-native'
-import React from 'react'
+import React, {useContext} from 'react'
 import Rectangle from '../../../assets/images/Rectangle.png'
 import CustomImage from '../../components/CustomImage/CustomImage'
-
+import { AuthContext } from '../../context/AuthContext'
+import CustomButton from '../../components/CustomButton/CustomButton'
 
 const Home = () => {
+  const {logout} = useContext(AuthContext);
   return (
     <SafeAreaView>
     <View style={styles.header}>
+      <CustomButton text="Logout" onPress={() => {logout()}} /> 
       <Text style={styles.title}>Blueby</Text>
         
       <View>
@@ -17,7 +20,7 @@ const Home = () => {
     </View>
 
     <View style={styles.body}>
-
+      
       <CustomImage source={Rectangle} name={'ququ'}/>
       <CustomImage source={Rectangle} name={'kiki'}/>
       <CustomImage source={Rectangle} name={'hihi'}/>

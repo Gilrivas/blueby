@@ -44,11 +44,10 @@ app.post('/login', async (req, res) => {
   
     const data = await User.findOne({ where: { email, password } });
   
-    if (data.id) {
-      const token = generateAuthToken(data.id);
-      return token
-      
-
+    if (data) {
+      const token = generateAuthToken(data);
+      res.json({ token });
+  
     } else {
       res.status(401).send('Invalid username or password');
     }
@@ -63,19 +62,8 @@ app.post('/login', async (req, res) => {
     return token
   }
  
- /*  function authenticateToken(req, res, next) {
-    const authHeader = req.headers['authorization'];
-    const token = authHeader && authHeader.split(' ')[1];
-    if (token == null) return res.sendStatus(401);
-  
-    jwt.verify(token, 'true', (err, user) => {
-      if (err) return res.sendStatus(403);
-      req.user = user;
-      next();
-    });
-  }  */
+
  
-  
 app.listen(3000, () => console.log('Server running on port 3000'));
   
 sequelize
